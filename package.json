@@ -1,0 +1,39 @@
+{
+  "name": "swarm-bot",
+  "version": "1.0.0",
+  "description": "Slack bot to interact with docker swarm",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/swarm-bot.git"
+  },
+  "keywords": [
+    "swarm",
+    "bot",
+    "slack",
+    "docker"
+  ],
+  "author": "First and Third, Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/swarm-bot/issues"
+  },
+  "homepage": "https://github.com/firstandthird/swarm-bot#readme",
+  "dependencies": {
+    "docker-service-update": "^1.0.0",
+    "dockerode": "^2.5.3",
+    "slack-command": "^0.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.1",
+    "eslint-config-firstandthird": "^4.1.1",
+    "eslint-plugin-import": "^2.8.0"
+  },
+  "eslintConfig": {
+    "extends": "firstandthird"
+  }
+}
