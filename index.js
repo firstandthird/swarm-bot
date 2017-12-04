@@ -5,6 +5,8 @@ const port = process.env.PORT || 8080;
 const Docker = require('dockerode');
 const docker = new Docker();
 const serviceUpdate = require('docker-service-update');
+const getDockerAuth = require('./lib/auth');
+const auth = getDockerAuth();
 
 const slackCommand = new SlackCommand(token);
 
@@ -43,6 +45,7 @@ slackCommand.register(command, {
     try {
       res = await serviceUpdate({
         docker,
+        auth,
         serviceName,
         environment: {
           UPDATE: new Date().getTime()
@@ -62,6 +65,7 @@ slackCommand.register(command, {
     try {
       res = await serviceUpdate({
         docker,
+        auth,
         serviceName,
         scale: parseInt(scale, 10)
       });
