@@ -53,6 +53,22 @@ const main = async function() {
     return listTasks(data, `Tasks running in ${service} service`, filter);
   }, 'list running tasks for a [service]');
 
+  slackCommand.register('^inspect (.*)', async (payload, match) => {
+    const serviceName = match[1];
+    const service = await docker.getService(serviceName);
+    const inspect = await service.inspect();
+    const send = {
+      response_type: 'in_channel',
+      text: `${serviceName} service info`,
+      attachments: [
+        {
+          text: JSON.stringify(inspect, null, 2)
+        }
+      ]
+    };
+    return send;
+  }, 'inspect [service]');
+
   slackCommand.register('^psa (.*)', async (payload, match) => {
     const service = match[1];
     const filter = {
