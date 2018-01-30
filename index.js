@@ -14,7 +14,7 @@ const main = async function() {
   });
 
   await slackCommand.start();
-  slackCommand.register('ls', async () => {
+  slackCommand.register('^ls', async () => {
     const services = await docker.listServices();
     const send = {
       response_type: 'in_channel',
@@ -80,7 +80,7 @@ const main = async function() {
     return listTasks(data, `Tasks all in ${service} service`, filter);
   }, 'list all tasks for a [service]');
 
-  slackCommand.register('redeploy (.*)', async (payload, match) => {
+  slackCommand.register('^redeploy (.*)', async (payload, match) => {
     const serviceName = match[1];
 
     await serviceUpdate({
@@ -96,7 +96,7 @@ const main = async function() {
     };
   }, 'redeploy a [service]');
 
-  slackCommand.register('scale (.*) (.*)', async (payload, match) => {
+  slackCommand.register('^scale (.*) (.*)', async (payload, match) => {
     const serviceName = match[1];
     const scale = match[2];
     await serviceUpdate({
@@ -111,7 +111,7 @@ const main = async function() {
   }, 'scale [service] [number]');
 
 
-  slackCommand.register('logs (.*)', async (payload, match) => {
+  slackCommand.register('^logs (.*)', async (payload, match) => {
     const serviceName = match[1];
     const service = await docker.getService(serviceName);
     const opts = {
@@ -132,7 +132,7 @@ const main = async function() {
     });
   }, 'logs for [service]');
 
-  slackCommand.register('nodes', async (payload, match) => {
+  slackCommand.register('^nodes', async (payload, match) => {
     const data = await docker.listNodes();
     const send = {
       response_type: 'in_channel',
@@ -153,7 +153,7 @@ const main = async function() {
     return send;
   }, 'list the nodes in the swarm');
 
-  slackCommand.register('node ps (.*)', async (payload, match) => {
+  slackCommand.register('^node ps (.*)', async (payload, match) => {
     const nodeId = match[1];
     const filter = {
       filters: {
@@ -161,7 +161,6 @@ const main = async function() {
       }
     };
     const data = await docker.listTasks(filter);
-    console.log(data);
     return listTasks(data, `Tasks running on node ${nodeId}`, filter);
   }, 'list containers running on a [nodeId]');
 };
