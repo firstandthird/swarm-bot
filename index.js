@@ -17,7 +17,6 @@ const main = async function() {
   slackCommand.register('^ls', async () => {
     const services = await docker.listServices();
     const send = {
-      response_type: 'in_channel',
       text: 'Services running:',
       attachments: services.map(d => ({ title: d.Spec.Name })).sort((a, b) => a.title.localeCompare(b.title))
     };
@@ -92,6 +91,7 @@ const main = async function() {
       }
     });
     return {
+      response_type: 'in_channel',
       text: `${serviceName} is redeploying...`
     };
   }, 'redeploy a [service]');
