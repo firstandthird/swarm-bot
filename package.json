@@ -1,6 +1,6 @@
 {
   "name": "swarm-bot",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Slack bot to interact with docker swarm",
   "main": "index.js",
   "scripts": {
