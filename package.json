@@ -4,7 +4,7 @@
   "description": "Slack bot to interact with docker swarm",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "slack-command",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,7 +26,7 @@
   "dependencies": {
     "docker-service-update": "^1.0.0",
     "dockerode": "^2.5.3",
-    "slack-command": "^2.1.0"
+    "slack-command": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "^4.12.1",
