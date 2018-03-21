@@ -3,7 +3,7 @@ const listTasks = require('../lib/listTasks');
 
 module.exports = {
   expression: '^node ps (.*)',
-  handler: async (slackPayload, match) => {
+  async handler(slackPayload, match) {
     const nodeId = match[1];
     const filter = {
       filters: {

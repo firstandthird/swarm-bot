@@ -24,9 +24,10 @@
   },
   "homepage": "https://github.com/firstandthird/swarm-bot#readme",
   "dependencies": {
+    "@firstandthird/docker-services": "^3.4.1",
     "docker-service-update": "^1.0.0",
     "dockerode": "^2.5.3",
-    "slack-command": "^3.0.1"
+    "slack-command": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^4.12.1",

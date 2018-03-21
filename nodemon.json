@@ -1,0 +1,14 @@
+{
+  "ignore": [
+    ".git",
+    "node_modules"
+  ],
+  "watch": [
+    "package.json",
+    "slack-command.yaml",
+    "commands/**/*.js",
+    "callbacks/**/*.js",
+    "lib/**/*.js"
+  ],
+  "ext": "js yaml"
+}

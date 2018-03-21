@@ -3,7 +3,7 @@ const listTasks = require('../lib/listTasks');
 
 module.exports = {
   expression: '^ps (.*)',
-  handler: async (payload, match) => {
+  async handler(payload, match) {
     const service = match[1];
     const filter = {
       filters: {

@@ -2,7 +2,7 @@ const docker = require('../lib/docker');
 
 module.exports = {
   expression: '^logs (.*)',
-  handler: async (slackPayload, match) => {
+  async handler(slackPayload, match) {
     const serviceName = match[1];
     const service = await docker.getService(serviceName);
     const opts = {
@@ -14,10 +14,16 @@ module.exports = {
     const logStream = await service.logs(opts);
     let logs = '';
     return new Promise((resolve, reject) => {
-      logStream.on('data', (s) => logs += s.toString());
+      logStream.on('data', (s) => {
+        logs += s.toString().replace(/\[\d+m/g, '');
+      });
       logStream.on('end', () => {
         resolve({
-          text: logs
+          response_type: 'in_channel',
+          text: `${serviceName} last 100 logs`,
+          attachments: [{
+            text: logs
+          }]
         });
       });
     });

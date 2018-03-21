@@ -3,7 +3,7 @@ const docker = require('../lib/docker');
 
 module.exports = {
   expression: '^psa (.*)',
-  handler: async (slackPayload, match) => {
+  async handler(slackPayload, match) {
     const service = match[1];
     const filter = {
       filters: {

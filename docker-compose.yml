@@ -1,5 +1,6 @@
 app:
-  image: 'firstandthird/node:8.8-dev-root'
+  dockerfile: 'DockerfileDev'
+  build: '.'
   volumes:
     - './:/home/app/src'
     - '/var/run/docker.sock:/var/run/docker.sock'

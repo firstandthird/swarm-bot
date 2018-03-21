@@ -2,7 +2,7 @@ const docker = require('../lib/docker');
 
 module.exports = {
   expression: '^nodes',
-  handler: async (slackPayload, match) => {
+  async handler(slackPayload, match) {
     const data = await docker.listNodes();
     const send = {
       response_type: 'in_channel',
