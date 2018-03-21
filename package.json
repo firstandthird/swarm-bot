@@ -27,7 +27,7 @@
     "@firstandthird/docker-services": "^3.4.1",
     "docker-service-update": "^1.0.0",
     "dockerode": "^2.5.3",
-    "slack-command": "^4.0.0"
+    "slack-command": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^4.12.1",
