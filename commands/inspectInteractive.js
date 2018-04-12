@@ -1,10 +1,8 @@
-const docker = require('../lib/docker');
+const listServices = require('../lib/listServices.js');
 
 module.exports = {
   expression: '^inspect$',
   async handler(slackPayload, match) {
-    const services = await docker.listServices();
-    const options = services.map(s => ({ text: s.Spec.Name, value: s.Spec.Name }));
     return {
       response_type: 'in_channel',
       attachments: [
@@ -12,14 +10,7 @@ module.exports = {
           text: 'Choose a service',
           attachment_type: 'default',
           callback_id: 'commandWithName',
-          actions: [
-            {
-              name: 'inspect',
-              text: 'pick a command...',
-              type: 'select',
-              options
-            }
-          ]
+          actions: await listServices('inspect')
         }
       ]
     };
