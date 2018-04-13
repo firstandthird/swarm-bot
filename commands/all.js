@@ -41,6 +41,10 @@ module.exports = {
                 value: 'redeploy'
               },
               {
+                text: 'remove a service',
+                value: 'remove'
+              },
+              {
                 text: 'logs for a service',
                 value: 'logs'
               },
