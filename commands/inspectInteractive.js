@@ -6,7 +6,6 @@ module.exports = {
     const services = await docker.listServices();
     const options = services.map(s => ({ text: s.Spec.Name, value: s.Spec.Name }));
     return {
-      response_type: 'in_channel',
       attachments: [
         {
           text: 'Choose a service',
