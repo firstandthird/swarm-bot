@@ -4,7 +4,6 @@ module.exports = {
   expression: '^redeploy$',
   async handler(slackPayload, match) {
     return {
-      response_type: 'in_channel',
       attachments: [
         {
           text: 'Choose a service',

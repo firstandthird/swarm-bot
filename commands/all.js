@@ -1,7 +1,6 @@
 module.exports = {
   expression: '*',
   handler: (slackPayload, match) => ({
-    response_type: 'in_channel',
     attachments: [
       {
         text: 'Choose a command',
