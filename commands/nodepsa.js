@@ -2,7 +2,7 @@ const docker = require('../lib/docker');
 const listTasks = require('../lib/listTasks');
 
 module.exports = {
-  expression: '^node ps (.*)',
+  expression: '^node psa (.*)',
   async handler(slackPayload, match) {
     const nodeId = match[1];
     const filter = {
@@ -11,7 +11,7 @@ module.exports = {
       }
     };
     const data = await docker.listTasks(filter);
-    return listTasks(data.filter(d => d.Status.State !== 'shutdown'), `Live tasks running on node ${nodeId}`, filter);
+    return listTasks(data, `Tasks running on node ${nodeId}`, filter);
   },
   description: 'list containers running on a [nodeId]'
 };
