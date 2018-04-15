@@ -22,13 +22,13 @@ module.exports = {
         };
         switch (d.Spec.Availability) {
           case 'active':
-            attachment.color = '#00ff00';
+            attachment.color = 'good';
             break;
           case 'paused':
-            attachment.color = '#FFFF00';
+            attachment.color = 'warning';
             break;
           default:
-            attachment.color = '#ff0000';
+            attachment.color = 'danger';
         }
         return attachment;
       })
