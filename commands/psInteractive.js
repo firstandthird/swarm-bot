@@ -6,7 +6,7 @@ module.exports = {
     return {
       attachments: [
         {
-          text: 'Choose a service',
+          text: 'Choose a service (debug version)',
           attachment_type: 'default',
           callback_id: 'commandWithName',
           actions: await listServices('ps')
