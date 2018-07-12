@@ -4,6 +4,7 @@ module.exports = {
   expression: '^logs$',
   async handler(slackPayload, match) {
     return {
+      response_type: 'in_channel',
       attachments: [
         {
           text: 'Choose a service',
