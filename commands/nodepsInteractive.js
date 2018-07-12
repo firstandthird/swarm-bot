@@ -6,6 +6,7 @@ module.exports = {
     const nodes = await docker.listNodes();
     const options = nodes.map(n => ({ text: `${n.Description.Hostname} [${n.ID}]`, value: n.ID }));
     return {
+      response_type: 'in_channel',
       attachments: [
         {
           text: 'Choose a node',
