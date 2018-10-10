@@ -1,8 +1,9 @@
-const docker = require('../lib/docker');
+const dockerspawn = require('../lib/docker');
 
 module.exports = {
   expression: '^remove (.*)',
   async handler(slackPayload, match) {
+    const docker = dockerspawn();
     const serviceName = match[1];
     // if they selected the abort option:
     if (serviceName.startsWith('-9999')) {

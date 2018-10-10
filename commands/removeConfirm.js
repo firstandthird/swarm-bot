@@ -1,5 +1,3 @@
-const docker = require('../lib/docker');
-
 module.exports = {
   expression: '^removeConfirm (.*)',
   async handler(slackPayload, match) {

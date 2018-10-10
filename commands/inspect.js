@@ -1,8 +1,9 @@
-const docker = require('../lib/docker');
+const dockerspawn = require('../lib/docker');
 
 module.exports = {
   expression: '^inspect (.*)',
   async handler(slackPayload, match) {
+    const docker = dockerspawn();
     const serviceName = match[1];
     const service = await docker.getService(serviceName);
     const inspect = await service.inspect();

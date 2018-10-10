@@ -1,8 +1,9 @@
-const docker = require('../lib/docker');
+const dockerspawn = require('../lib/docker');
 
 module.exports = {
   expression: '^node psa$',
   async handler(slackPayload, match) {
+    const docker = dockerspawn();
     const nodes = await docker.listNodes();
     const options = nodes.map(n => ({ text: `${n.Description.Hostname} [${n.ID}]`, value: n.ID }));
     return {
