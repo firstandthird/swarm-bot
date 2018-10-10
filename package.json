@@ -28,7 +28,7 @@
     "docker-service-update": "^1.0.0",
     "dockerode": "^2.5.3",
     "human-date": "^1.4.0",
-    "slack-command": "^4.1.0"
+    "slack-command": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^4.12.1",

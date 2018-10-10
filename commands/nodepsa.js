@@ -1,9 +1,10 @@
-const docker = require('../lib/docker');
+const dockerspawn = require('../lib/docker');
 const listTasks = require('../lib/listTasks');
 
 module.exports = {
   expression: '^node psa (.*)',
   async handler(slackPayload, match) {
+    const docker = dockerspawn();
     const nodeId = match[1];
     const filter = {
       filters: {

@@ -1,8 +1,9 @@
-const docker = require('../lib/docker');
+const dockerspawn = require('../lib/docker');
 
 module.exports = {
   expression: '^remove$',
   async handler(slackPayload, match) {
+    const docker = dockerspawn();
     const services = await docker.listServices();
     const options = services.map(s => ({ text: s.Spec.Name, value: s.Spec.Name }));
     return {

@@ -1,8 +1,9 @@
-const docker = require('../lib/docker');
+const dockerspawn = require('../lib/docker');
 
 module.exports = {
   expression: '^ls',
   async handler(slackPayload) {
+    const docker = dockerspawn();
     const services = await docker.listServices();
     const send = {
       response_type: 'in_channel',

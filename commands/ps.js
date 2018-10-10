@@ -1,9 +1,10 @@
-const docker = require('../lib/docker');
+const dockerspawn = require('../lib/docker');
 const listTasks = require('../lib/listTasks');
 
 module.exports = {
   expression: '^ps (.*)',
   async handler(payload, match) {
+    const docker = dockerspawn();
     const service = match[1];
     const filter = {
       filters: {
